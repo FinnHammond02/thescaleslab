@@ -1,0 +1,213 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The Scales Lab — Under-2-Minute Lead Replies for Real Estate</title>
+  <meta name="description" content="Lift booked appointments 20–40% in 14 days — without touching your property software." />
+  <link rel="icon" href="data:;base64,iVBORw0KGgo=">
+  <style>
+    :root{
+      --bg:#0b0c10;
+      --panel:#12141a;
+      --ink:#e8eaf0;
+      --muted:#aeb3c2;
+      --brand:#4f8cff;
+      --accent:#73ffa7;
+      --border:#242732;
+      --max: 980px;
+      --radius:14px;
+      --shadow: 0 10px 30px rgba(0,0,0,.35);
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,Segoe UI,Roboto,Inter,Arial,sans-serif}
+    a{color:var(--brand);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{max-width:var(--max);margin:0 auto;padding:24px}
+    header{padding:28px 0 8px}
+    .logo{display:flex;align-items:center;gap:10px;font-weight:700;letter-spacing:.2px}
+    .logo .bolt{display:inline-flex;align-items:center;justify-content:center;width:30px;height:30px;border-radius:8px;background:linear-gradient(135deg,var(--brand),#9aaeff)}
+    h1{font-size:clamp(28px,5.2vw,44px);line-height:1.15;margin:18px 0 6px}
+    p.lead{font-size:clamp(16px,2.6vw,20px);color:var(--muted);margin:0 0 20px}
+    .cta-row{display:flex;flex-wrap:wrap;gap:12px;margin:14px 0 32px}
+    .btn{
+      display:inline-flex;align-items:center;gap:10px;
+      background:var(--brand);color:#081026;font-weight:700;
+      padding:14px 18px;border-radius:12px;border:1px solid #7aa6ff;
+      box-shadow:var(--shadow);cursor:pointer;transition:transform .05s ease;
+    }
+    .btn:hover{transform:translateY(-1px)}
+    .btn.secondary{background:transparent;color:var(--ink);border:1px solid var(--border)}
+    .panel{background:var(--panel);border:1px solid var(--border);border-radius:var(--radius);box-shadow:var(--shadow)}
+    section{margin:26px 0 38px}
+    section h2{font-size:clamp(20px,3.6vw,28px);margin:0 0 14px}
+    .two-col{display:grid;grid-template-columns:1fr;gap:16px}
+    @media (min-width:860px){ .two-col{grid-template-columns:1fr 1fr} }
+    ol.how{margin:0;padding-left:18px}
+    ol.how li{margin:8px 0;color:var(--ink)}
+    .pricing{display:grid;grid-template-columns:1fr;gap:14px}
+    @media (min-width:900px){ .pricing{grid-template-columns:repeat(3,1fr)} }
+    .card{padding:18px;border-radius:12px;background:#0e1016;border:1px solid var(--border)}
+    .card h3{margin:0 0 8px;font-size:18px}
+    .muted{color:var(--muted)}
+    details{background:#0e1016;border:1px solid var(--border);border-radius:10px;padding:12px 14px}
+    details + details{margin-top:10px}
+    summary{cursor:pointer;font-weight:600}
+    .caption{font-size:14px;color:var(--muted);margin:8px 0 10px}
+    iframe{width:100%;border:0;border-radius:12px}
+    .hero-embed{aspect-ratio:16/9;background:#0e1016;border:1px solid var(--border)}
+    .footer{border-top:1px solid var(--border);padding:22px 0 40px;color:var(--muted);font-size:14px}
+    .notice{font-size:13px;color:var(--muted)}
+    .pill{display:inline-block;background:#0f1524;border:1px solid var(--border);padding:6px 10px;border-radius:999px;font-size:13px;color:var(--muted)}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="logo">
+      <span class="bolt">⚡️</span>
+      <span>The Scales Lab</span>
+      <span class="pill">Melbourne, AU</span>
+    </header>
+
+    <!-- Hero -->
+    <section aria-labelledby="hero">
+      <h1 id="hero">Under-2-Minute Lead Replies for Real Estate</h1>
+      <p class="lead">Lift booked appointments 20–40% in 14 days — without touching your property software.</p>
+      <div class="cta-row">
+        <a class="btn" href="#" id="bookCta">▶️ Book a 15-min Zoom</a>
+        <a class="btn secondary" href="#calendly">See times below</a>
+      </div>
+      <p class="notice">Prefer email? <a href="mailto:finn@thescaleslab.com">finn@thescaleslab.com</a></p>
+    </section>
+
+    <!-- Loom demo -->
+    <section aria-labelledby="demo" class="panel" style="padding:16px">
+      <h2 id="demo">90-second demo</h2>
+      <p class="caption">Watch how the Sales OS works end-to-end.</p>
+      <!-- Replace with your Loom embed URL -->
+      <iframe class="hero-embed"
+        src="YOUR_LOOM_EMBED_URL"
+        title="Loom demo"
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; picture-in-picture"
+        allowfullscreen>
+      </iframe>
+      <p class="caption">Can’t view the embed? <a href="YOUR_LOOM_SHARE_URL" target="_blank" rel="noopener">Open the Loom video</a>.</p>
+    </section>
+
+    <!-- How it works -->
+    <section aria-labelledby="how">
+      <h2 id="how">How it works</h2>
+      <div class="two-col">
+        <div class="panel" style="padding:16px">
+          <ol class="how">
+            <li><strong>Capture every lead</strong> → We parse portal emails + website forms into a single inbox (Airtable/HubSpot Free).</li>
+            <li><strong>Instant reply (&lt;120s)</strong> → Auto SMS + email with your appraisal booking link (Calendly). Missed-call text-back included.</li>
+            <li><strong>Show-up &amp; follow-up</strong> → Confirmations, reminders, no-show reschedule, 30/120-minute nudges, 30-day nurture.</li>
+            <li><strong>Dashboard &amp; alerts</strong> → Live booked-appointments/100 leads, reply-time distribution, show rate. Errors ping us instantly.</li>
+          </ol>
+        </div>
+        <div class="panel" style="padding:16px">
+          <p class="muted">Built to wrap around your stack. No brittle custom APIs — we start with forms, email parsing, CSV, Calendly.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Pricing -->
+    <section aria-labelledby="pricing">
+      <h2 id="pricing">Offer &amp; pricing</h2>
+      <div class="pricing">
+        <div class="card">
+          <h3>Starter — Speed-to-Lead OS (14-day install)</h3>
+          <p>• Setup: <strong>AUD $1,500–$2,500</strong> · Ops: <strong>$750–$1,250/mo</strong><br>
+             • Pilot: <strong>$1,000 for 14 days</strong> (credited if you continue)</p>
+        </div>
+        <div class="card">
+          <h3>Pro — Sales Analytics OS (auto-instrumented)</h3>
+          <p>Everything in Starter + end-to-end funnel analytics (lead → touch → booked → show → won/lost), weekly scorecard &amp; recommendations<br>
+             • Setup: <strong>$2,500–$3,500</strong> · Ops: <strong>$1,500–$2,200/mo</strong></p>
+        </div>
+        <div class="card">
+          <h3>Lab — Revenue Experiments (A/B + routing + optional performance)</h3>
+          <p>Copy/routing tests, lead scoring, media reallocation suggestions; optional $/qualified booking with a cap<br>
+             • Setup: <strong>$3,500–$5,000</strong> · Ops: <strong>$2,500–$4,000/mo</strong> (+ optional performance)</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Proof -->
+    <section aria-labelledby="proof">
+      <h2 id="proof">Recent pilot results (same mechanics as agencies)</h2>
+      <details open>
+        <summary>See the quick metrics</summary>
+        <ul>
+          <li>Reply time cut to <strong>&lt; 2 minutes</strong></li>
+          <li><strong>Booked appointments per 100 leads: +22%</strong> (equivalent metric)</li>
+          <li>No-shows <strong>−18%</strong></li>
+        </ul>
+        <p class="muted">In real estate this maps to faster appraisal bookings, higher show-rates, and fewer wasted leads. I’ll walk you through the RE version on the call.</p>
+      </details>
+    </section>
+
+    <!-- FAQ -->
+    <section aria-labelledby="faq">
+      <h2 id="faq">FAQ</h2>
+      <details>
+        <summary>Do you integrate with Agentbox/Box+Dice/Rex/VaultRE/PropertyMe?</summary>
+        <p>For the pilot we <strong>wrap around</strong> your stack (forms, email parsing, CSV, Calendly). No brittle custom APIs.</p>
+      </details>
+      <details>
+        <summary>Do you need to visit our office?</summary>
+        <p>No — full remote install. One 45-min onboarding Zoom.</p>
+      </details>
+      <details>
+        <summary>How fast can we be live?</summary>
+        <p>14 days from kickoff; pilots run for two weeks.</p>
+      </details>
+      <details>
+        <summary>What about data/privacy?</summary>
+        <p>You’re the data <strong>controller</strong>; The Scales Lab acts as a <strong>processor</strong>. We store minimal PII (name, phone, email, enquiry metadata) in Airtable/HubSpot, encrypted in transit, and delete on request.</p>
+      </details>
+      <details>
+        <summary>Contracts?</summary>
+        <p>Month-to-month after the pilot with a 14-day kill switch.</p>
+      </details>
+      <details>
+        <summary>What results should we expect?</summary>
+        <p>Typical pilots achieve sub-2-minute replies and a <strong>20–40%</strong> lift in booked appointments. We baseline your numbers and report the deltas.</p>
+      </details>
+    </section>
+
+    <!-- Calendly -->
+    <section aria-labelledby="book" id="calendly" class="panel" style="padding:16px">
+      <h2 id="book">Book a time</h2>
+      <div class="caption">Pick a 15-minute Zoom that suits you.</div>
+      <!-- Inline Calendly widget -->
+      <div class="calendly-inline-widget"
+           data-url="YOUR_CALENDLY_URL"
+           style="min-width:320px;height:720px"></div>
+      <p class="caption">Or open in a new tab: <a href="YOUR_CALENDLY_URL" target="_blank" rel="noopener">Calendly</a>.</p>
+    </section>
+
+    <!-- Footer -->
+    <div class="footer">
+      <p>Privacy: The Scales Lab is a data processor; clients are data controllers. We retain only necessary PII for the stated purpose and delete on request. No data is sold or shared with third parties. © The Scales Lab</p>
+    </div>
+  </div>
+
+  <!-- Calendly embed script -->
+  <script src="https://assets.calendly.com/assets/external/widget.js" async></script>
+  <script>
+    // Make the top CTA open Calendly as a popup
+    const cta = document.getElementById('bookCta');
+    cta.addEventListener('click', function(e){
+      e.preventDefault();
+      if (window.Calendly) {
+        Calendly.initPopupWidget({ url: 'YOUR_CALENDLY_URL' });
+      } else {
+        // Fallback: jump to inline widget
+        location.hash = '#calendly';
+      }
+    });
+  </script>
+</body>
+</html>

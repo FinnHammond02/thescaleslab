@@ -1,215 +1,307 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="h-full">
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>The Scales Lab — Under-2-Minute Lead Replies for Real Estate</title>
-  <meta name="description" content="Lift booked appointments 20–40% in 14 days — without touching your property software." />
-  <meta property="og:title" content="The Scales Lab" />
-  <meta property="og:description" content="Lift booked appointments 20–40% in 14 days — without touching your property software." />
+
+  <title>{{PAGE_TITLE}} Real Estate Sales OS — Under-2-Minute Lead Replies</title>
+  <meta name="description" content="{{META_DESCRIPTION}} Lift booked appraisals 20–40% in 14 days—without touching your CRM." />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Real Estate Sales OS — Under-2-Minute Lead Replies" />
+  <meta property="og:description" content="Lift booked appraisals 20–40% in 14 days—without touching your CRM." />
   <meta property="og:type" content="website" />
-  <meta property="og:url" content="https://thescaleslab.com" />
-  <meta property="og:image" content="/assets/og.jpg" />
+  <meta property="og:url" content="https://thescaleslab.com/" />
+  <meta property="og:image" content="/og.jpg" />
+
+  <!-- Favicon placeholder -->
   <link rel="icon" href="/favicon.ico" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- Theme -->
+  <meta name="theme-color" content="#111827" />
+
+  <!-- Tailwind (CDN, no build step) -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    // Tailwind config (optional): use system font stack for speed
+    tailwind.config = {
+      theme: { extend: {} }
+    };
+  </script>
+
   <style>
-    :root{
-      --bg:#ffffff;            /* ultra-minimal, light theme */
-      --ink:#0a0a0a;           /* primary text */
-      --muted:#6b7280;         /* secondary text */
-      --line:#eaeaea;          /* dividers */
-      --ink-soft:#111827;
-      --radius:14px;
-      --maxw:1100px;           /* content width similar to modern agency sites */
+    /* Prefer-reduced-motion: minimize transitions for accessibility */
+    @media (prefers-reduced-motion: reduce) {
+      .motion-safe\:transition { transition: none !important; }
+      .motion-safe\:duration-300 { transition-duration: 0ms !important; }
     }
-    *{box-sizing:border-box}
-    html,body{height:100%}
-    body{margin:0;color:var(--ink);background:var(--bg);font-family:'Inter',system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.6;letter-spacing:.01em}
-    .wrap{max-width:var(--maxw);margin:0 auto;padding:0 20px}
-    a{color:var(--ink);text-decoration:none}
-    /* --- NAV --- */
-    .nav{position:sticky;top:0;z-index:30;background:rgba(255,255,255,.8);backdrop-filter:saturate(130%) blur(8px);border-bottom:1px solid var(--line)}
-    .nav-inner{display:flex;align-items:center;justify-content:space-between;padding:16px 0}
-    .brand{font-weight:800;letter-spacing:.2px}
-    .nav a.btn{padding:10px 14px;border:1px solid var(--ink);border-radius:10px;font-weight:700}
-    .nav a.btn:hover{background:var(--ink);color:#fff}
-
-    /* --- HERO --- */
-    .hero{padding:96px 0 48px;border-bottom:1px solid var(--line)}
-    .hero h1{font-size:clamp(36px,5.4vw,64px);line-height:1.08;letter-spacing:-.02em;margin:0 0 12px;font-weight:800}
-    .hero p.sub{font-size:clamp(16px,2.1vw,20px);color:var(--ink-soft);margin:0 0 22px}
-    .cta-row{display:flex;gap:12px;flex-wrap:wrap}
-    .cta{display:inline-flex;align-items:center;gap:10px;padding:12px 16px;border:1px solid var(--ink);border-radius:12px;font-weight:700}
-    .cta:hover{background:var(--ink);color:#fff}
-
-    /* --- GRID --- */
-    .section{padding:72px 0;border-bottom:1px solid var(--line)}
-    .grid-2{display:grid;grid-template-columns:1fr;gap:28px}
-    @media(min-width:980px){.grid-2{grid-template-columns:1.1fr .9fr}}
-
-    /* --- EMBED --- */
-    .embed{border:1px solid var(--line);border-radius:12px;padding:12px}
-    .embed iframe{width:100%;aspect-ratio:16/9;border:0;border-radius:8px}
-    .caption{font-size:13px;color:var(--muted);margin-top:8px;text-align:center}
-
-    /* --- LIST / STEPS --- */
-    h2{font-size:clamp(22px,3vw,30px);margin:0 0 12px}
-    .steps ol{margin:0;padding-left:18px}
-    .steps li{margin:10px 0 12px}
-
-    /* --- CARDS --- */
-    .cards{display:grid;grid-template-columns:1fr;gap:16px}
-    @media(min-width:900px){.cards{grid-template-columns:repeat(3,1fr)}}
-    .card{border:1px solid var(--line);border-radius:12px;padding:20px}
-    .card h3{margin:0 0 8px;font-size:18px}
-    .card ul{margin:0;padding-left:18px}
-
-    /* --- FAQ --- */
-    details{border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin:12px 0}
-    summary{cursor:pointer;font-weight:700}
-    summary::-webkit-details-marker{display:none}
-
-    /* --- CONTACT STRIP --- */
-    .contact-strip{display:flex;align-items:center;justify-content:center;gap:12px;padding:22px;border:1px solid var(--line);border-radius:12px}
-
-    /* --- FOOTER --- */
-    footer{padding:36px 0 80px;color:var(--muted)}
   </style>
 </head>
-<body>
-  <!-- NAV -->
-  <nav class="nav">
-    <div class="wrap nav-inner">
-      <div class="brand">The Scales Lab</div>
-      <a class="btn" href="mailto:finn@thescalelab.com?subject=Enquiry%20—%20The%20Scales%20Lab&body=Hi%20Finn%2C%20">Contact now</a>
-    </div>
-  </nav>
 
-  <!-- HERO -->
-  <header class="hero">
-    <div class="wrap">
-      <h1>Under-2-Minute Lead Replies for Real Estate</h1>
-      <p class="sub">Lift booked appointments 20–40% in 14 days — without touching your property software.</p>
-      <div class="cta-row">
-        <a class="cta" href="mailto:finn@thescalelab.com?subject=Enquiry%20—%20The%20Scales%20Lab&body=Hi%20Finn%2C%20">Contact now</a>
+<body class="min-h-full bg-white text-neutral-900 antialiased scroll-smooth">
+  <header class="border-b border-neutral-200">
+    <div class="mx-auto max-w-5xl px-4 py-10 md:py-16">
+      <!-- Hero -->
+      <p class="text-sm text-neutral-600">{{TRUST_STRIP}} Remote install · 14-day pilot · Month-to-month</p>
+
+      <h1 class="mt-3 text-4xl font-extrabold tracking-tight md:mt-4 md:text-6xl">
+        {{HERO_HEADLINE}} Under-2-Minute Lead Replies for Real Estate.
+      </h1>
+
+      <p class="mt-3 max-w-2xl text-base text-neutral-700 md:text-lg">
+        {{HERO_SUBHEAD}} Lift booked appraisals 20–40% in 14 days—without touching your CRM.
+      </p>
+
+      <div class="mt-6 flex flex-wrap items-center gap-3">
+        <a
+          href="mailto:finn@thescalelab.com?subject=Sales%20OS%20enquiry"
+          class="inline-flex items-center rounded-md bg-blue-600 px-5 py-3 text-sm font-semibold text-white motion-safe:transition motion-safe:duration-300 hover:opacity-90 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2"
+        >
+          Contact Now
+        </a>
       </div>
     </div>
   </header>
 
-  <main>
-    <!-- Loom + Steps -->
-    <section class="section">
-      <div class="wrap grid-2">
-        <div class="embed">
-          <div class="caption">Watch how the Sales OS works end-to-end.</div>
-          <div style="height:10px"></div>
-          <iframe src="REPLACE_LOOM_EMBED_URL" allow="autoplay; fullscreen" allowfullscreen title="Loom demo"></iframe>
-        </div>
-        <div class="steps">
-          <h2>How it works</h2>
-          <ol>
-            <li>Capture every lead → We parse portal emails + website forms into a single inbox (Airtable/HubSpot Free).</li>
-            <li>Instant reply (&lt;120s) → Auto SMS + email with your appraisal booking link (Calendly). Missed-call text-back included.</li>
-            <li>Show-up &amp; follow-up → Confirmations, reminders, no-show reschedule, 30/120-minute nudges, 30-day nurture.</li>
-            <li>Dashboard &amp; alerts → Live booked-appointments/100 leads, reply-time distribution, show rate. Errors ping us instantly.</li>
-          </ol>
+  <main id="main-content">
+    <!-- Loom (full-bleed) -->
+    <section aria-labelledby="demo-title" class="border-b border-neutral-200">
+      <h2 id="demo-title" class="sr-only">Product demo</h2>
+
+      <!-- Full-bleed wrapper -->
+      <div class="relative left-1/2 right-1/2 -mx-[50vw] w-screen bg-neutral-50">
+        <div class="mx-auto max-w-5xl px-4 py-10 md:py-16">
+          <div class="relative w-full overflow-hidden rounded-xl border border-neutral-200 bg-white shadow-sm">
+            <!-- 16:9 responsive -->
+            <div class="relative pt-[56.25%]">
+              <iframe
+                title="Real Estate Sales OS — 90 second demo"
+                class="absolute inset-0 h-full w-full"
+                src="https://www.loom.com/embed/{{VIDEO_ID}}"
+                loading="lazy"
+                allow="fullscreen; autoplay"
+              ></iframe>
+            </div>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Offer & pricing -->
-    <section class="section">
-      <div class="wrap">
-        <h2>Offer &amp; pricing</h2>
-        <div class="cards">
-          <article class="card">
-            <h3><strong>Starter — Speed-to-Lead OS (14-day install)</strong></h3>
-            <ul>
-              <li>Setup: AUD $1,500–$2,500 · Ops: $750–$1,250/mo</li>
-              <li>Pilot: $1,000 for 14 days (credited if you continue)</li>
-            </ul>
-          </article>
-          <article class="card">
-            <h3><strong>Pro — Sales Analytics OS (auto-instrumented)</strong></h3>
-            <ul>
-              <li>Everything in Starter + end-to-end funnel analytics (lead → touch → booked → show → won/lost), weekly scorecard &amp; recommendations</li>
-              <li>Setup: $2,500–$3,500 · Ops: $1,500–$2,200/mo</li>
-            </ul>
-          </article>
-          <article class="card">
-            <h3><strong>Lab — Revenue Experiments (A/B + routing + optional performance)</strong></h3>
-            <ul>
-              <li>Copy/routing tests, lead scoring, media reallocation suggestions; optional $/qualified booking with a cap</li>
-              <li>Setup: $3,500–$5,000 · Ops: $2,500–$4,000/mo (+ optional performance)</li>
-            </ul>
-          </article>
+    <!-- Value Stack -->
+    <section aria-labelledby="value-title" class="border-b border-neutral-200">
+      <div class="mx-auto max-w-5xl px-4 py-16 md:py-20">
+        <h2 id="value-title" class="text-2xl font-extrabold tracking-tight md:text-3xl">
+          {{VALUE_TITLE}} Why this matters
+        </h2>
+
+        <div class="mt-8 grid grid-cols-1 gap-6 md:grid-cols-3">
+          <div class="rounded-lg border border-neutral-200 p-6">
+            <h3 class="text-lg font-semibold">Faster first contact</h3>
+            <p class="mt-2 text-sm text-neutral-700">Reply &lt;2 min, 24/7.</p>
+          </div>
+
+          <div class="rounded-lg border border-neutral-200 p-6">
+            <h3 class="text-lg font-semibold">More booked appraisals</h3>
+            <p class="mt-2 text-sm text-neutral-700">+20–40% per 100 leads.</p>
+          </div>
+
+          <div class="rounded-lg border border-neutral-200 p-6">
+            <h3 class="text-lg font-semibold">No more leaks</h3>
+            <p class="mt-2 text-sm text-neutral-700">Every lead captured, routed, followed up.</p>
+          </div>
         </div>
       </div>
     </section>
 
-    <!-- Results -->
-    <section class="section">
-      <div class="wrap">
-        <h2>Recent pilot results (same mechanics as agencies)</h2>
-        <ul>
-          <li>Reply time cut to <strong>&lt;2 minutes</strong></li>
-          <li><strong>Booked appointments per 100 leads: +22%</strong> (equivalent metric)</li>
-          <li>No-shows <strong>−18%</strong></li>
+    <!-- How It Works -->
+    <section aria-labelledby="how-title" class="border-b border-neutral-200">
+      <div class="mx-auto max-w-5xl px-4 py-16 md:py-20">
+        <h2 id="how-title" class="text-2xl font-extrabold tracking-tight md:text-3xl">
+          {{HOW_TITLE}} How it works
+        </h2>
+
+        <ol class="mt-6 space-y-4 text-neutral-800">
+          <li class="flex gap-3">
+            <span class="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-neutral-300 text-xs font-semibold">1</span>
+            <span><strong>Capture:</strong> portal emails + forms → unified inbox.</span>
+          </li>
+          <li class="flex gap-3">
+            <span class="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-neutral-300 text-xs font-semibold">2</span>
+            <span><strong>Instant reply:</strong> SMS &amp; email + self-booking.</span>
+          </li>
+          <li class="flex gap-3">
+            <span class="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-neutral-300 text-xs font-semibold">3</span>
+            <span><strong>Show-up &amp; recovery:</strong> reminders, no-show reschedule.</span>
+          </li>
+          <li class="flex gap-3">
+            <span class="inline-flex h-6 w-6 shrink-0 items-center justify-center rounded-full border border-neutral-300 text-xs font-semibold">4</span>
+            <span><strong>Dashboard &amp; AI insights:</strong> daily KPIs + weekly test ideas.</span>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <!-- Offer -->
+    <section aria-labelledby="offer-title" class="border-b border-neutral-200">
+      <div class="mx-auto max-w-5xl px-4 py-16 md:py-20">
+        <h2 id="offer-title" class="text-2xl font-extrabold tracking-tight md:text-3xl">
+          {{OFFER_HEADLINE}} Live in 14 Days. Remote. No CRM integration needed.
+        </h2>
+
+        <ul class="mt-6 list-disc space-y-2 pl-5 text-neutral-800">
+          <li>Lead capture (portals + forms) to a unified inbox</li>
+          <li>Instant SMS &amp; email reply</li>
+          <li>Self-booking link</li>
+          <li>Follow-ups + reminders + no-show recovery</li>
+          <li>Simple dashboard (reply time, BA/100, show rate)</li>
+          <li>Weekly AI brief with test ideas</li>
         </ul>
-        <p class="muted">In real estate this maps to faster appraisal bookings, higher show-rates, and fewer wasted leads. I’ll walk you through the RE version on the call.</p>
+
+        <p class="mt-6 text-base font-semibold text-neutral-900">
+          {{PRICING_LINE}} Pilot $1,000 / 14 days (credited if you continue). Setup from $1,500, Ops from $750/mo.
+        </p>
+
+        <div class="mt-6">
+          <a
+            href="mailto:finn@thescalelab.com?subject=Sales%20OS%20enquiry"
+            class="inline-flex items-center rounded-md bg-blue-600 px-5 py-3 text-sm font-semibold text-white motion-safe:transition motion-safe:duration-300 hover:opacity-90 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2"
+          >
+            Contact Now
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Proof / Case Study -->
+    <section aria-labelledby="proof-title" class="border-b border-neutral-200">
+      <div class="mx-auto max-w-5xl px-4 py-16 md:py-20">
+        <h2 id="proof-title" class="text-2xl font-extrabold tracking-tight md:text-3xl">
+          {{PROOF_TITLE}} Proof (mechanics-first)
+        </h2>
+
+        <div class="mt-6 rounded-xl border border-neutral-200 p-6 shadow-sm">
+          <ul class="grid grid-cols-1 gap-4 md:grid-cols-3">
+            <li class="rounded-lg bg-neutral-50 p-4 text-center">
+              <div class="text-sm text-neutral-500">Reply time</div>
+              <div class="mt-1 text-xl font-bold">hours → &lt;2 min</div>
+            </li>
+            <li class="rounded-lg bg-neutral-50 p-4 text-center">
+              <div class="text-sm text-neutral-500">Booked appraisals / 100 leads</div>
+              <div class="mt-1 text-xl font-bold">+{{XX}}% in 14 days</div>
+            </li>
+            <li class="rounded-lg bg-neutral-50 p-4 text-center">
+              <div class="text-sm text-neutral-500">No-shows</div>
+              <div class="mt-1 text-xl font-bold">−{{YY}}%</div>
+            </li>
+          </ul>
+          <p class="mt-4 text-sm text-neutral-600">Results from a recent pilot using identical workflow.</p>
+        </div>
       </div>
     </section>
 
     <!-- FAQ -->
-    <section class="section">
-      <div class="wrap">
-        <h2>FAQ</h2>
-        <details>
-          <summary><strong>Do you integrate with Agentbox/Box+Dice/Rex/VaultRE/PropertyMe?</strong></summary>
-          <div class="muted">For the pilot we <strong>wrap around</strong> your stack (forms, email parsing, CSV, Calendly). No brittle custom APIs.</div>
-        </details>
-        <details>
-          <summary><strong>Do you need to visit our office?</strong></summary>
-          <div class="muted">No — full remote install. One 45-min onboarding Zoom.</div>
-        </details>
-        <details>
-          <summary><strong>How fast can we be live?</strong></summary>
-          <div class="muted">14 days from kickoff; pilots run for two weeks.</div>
-        </details>
-        <details>
-          <summary><strong>What about data/privacy?</strong></summary>
-          <div class="muted">You’re the data <strong>controller</strong>; The Scales Lab acts as a <strong>processor</strong>. We store minimal PII (name, phone, email, enquiry metadata) in Airtable/HubSpot, encrypted in transit, and delete on request.</div>
-        </details>
-        <details>
-          <summary><strong>Contracts?</strong></summary>
-          <div class="muted">Month-to-month after the pilot with a 14-day kill switch.</div>
-        </details>
-        <details>
-          <summary><strong>What results should we expect?</strong></summary>
-          <div class="muted">Typical pilots achieve sub-2-minute replies and a <strong>20–40%</strong> lift in booked appointments. We baseline your numbers and report the deltas.</div>
-        </details>
-      </div>
-    </section>
+    <section aria-labelledby="faq-title" class="border-b border-neutral-200">
+      <div class="mx-auto max-w-5xl px-4 py-16 md:py-20">
+        <h2 id="faq-title" class="text-2xl font-extrabold tracking-tight md:text-3xl">FAQ</h2>
 
-    <!-- Contact strip -->
-    <section class="section">
-      <div class="wrap">
-        <div class="contact-strip">
-          <span class="muted">Prefer email?</span>
-          <a class="cta" href="mailto:finn@thescalelab.com?subject=Enquiry%20—%20The%20Scales%20Lab&body=Hi%20Finn%2C%20">Contact now</a>
-          <span class="muted">finn@thescalelab.com · Melbourne, AU</span>
+        <div class="mt-6 space-y-4">
+          <details class="rounded-lg border border-neutral-200 p-4">
+            <summary class="cursor-pointer text-base font-semibold">Do you integrate with Agentbox/Box+Dice/etc.?</summary>
+            <p class="mt-2 text-sm text-neutral-700">
+              Pilot runs around your CRM via forms/email parsing; we mirror activity by CSV/BCC. No risky APIs needed.
+            </p>
+          </details>
+
+          <details class="rounded-lg border border-neutral-200 p-4">
+            <summary class="cursor-pointer text-base font-semibold">Do you need to visit our office?</summary>
+            <p class="mt-2 text-sm text-neutral-700">No, fully remote; 45-min onboarding.</p>
+          </details>
+
+          <details class="rounded-lg border border-neutral-200 p-4">
+            <summary class="cursor-pointer text-base font-semibold">Data &amp; privacy?</summary>
+            <p class="mt-2 text-sm text-neutral-700">
+              You’re the controller; we’re the processor. Minimal PII; delete on request.
+            </p>
+          </details>
+
+          <details class="rounded-lg border border-neutral-200 p-4">
+            <summary class="cursor-pointer text-base font-semibold">Timeline?</summary>
+            <p class="mt-2 text-sm text-neutral-700">Go-live in 14 days.</p>
+          </details>
         </div>
       </div>
     </section>
 
+    <!-- About -->
+    <section aria-labelledby="about-title" class="border-b border-neutral-200">
+      <div class="mx-auto max-w-5xl px-4 py-16 md:py-20">
+        <h2 id="about-title" class="text-2xl font-extrabold tracking-tight md:text-3xl">About</h2>
+        <div class="mt-6 flex items-center gap-4">
+          <div class="h-16 w-16 rounded-full bg-neutral-200" aria-hidden="true"></div>
+          <p class="max-w-3xl text-sm text-neutral-800">
+            {{ABOUT_PARAGRAPH}} I’m Finn (Melbourne, AU). Background in B2B sales at Landchecker.
+            I build AI + automation systems for real-estate teams to cut speed-to-lead and lift booked appraisals.
+          </p>
+        </div>
+      </div>
+    </section>
   </main>
 
-  <footer>
-    <div class="wrap">
-      <p>Privacy: The Scales Lab is a data processor; clients are data controllers. We retain only necessary PII for the stated purpose and delete on request. No data is sold or shared with third parties. © The Scales Lab</p>
+  <!-- Sticky CTA (appears after 600px scroll) -->
+  <div id="sticky-cta"
+       class="pointer-events-none fixed inset-x-0 bottom-0 z-30 translate-y-4 opacity-0 motion-safe:transition motion-safe:duration-300">
+    <div class="mx-auto max-w-5xl px-4 pb-4">
+      <div class="ml-auto w-full max-w-xs rounded-md border border-neutral-200 bg-white/95 p-3 shadow-lg backdrop-blur supports-[backdrop-filter]:bg-white/75">
+        <div class="flex items-center justify-end">
+          <a
+            href="mailto:finn@thescalelab.com?subject=Sales%20OS%20enquiry"
+            class="pointer-events-auto inline-flex items-center rounded-md bg-blue-600 px-4 py-2 text-sm font-semibold text-white motion-safe:transition motion-safe:duration-300 hover:opacity-90 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2"
+            aria-label="Contact Now"
+          >
+            Contact Now
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <footer class="border-t border-neutral-200">
+    <div class="mx-auto max-w-5xl px-4 py-10 md:py-12">
+      <div class="flex flex-col items-start gap-2 text-sm text-neutral-600 md:flex-row md:items-center md:justify-between">
+        <p>
+          <a href="mailto:finn@thescalelab.com?subject=Sales%20OS%20enquiry" class="font-medium text-neutral-800 hover:underline">
+            finn@thescalelab.com
+          </a>
+          <span class="mx-2">·</span> Melbourne, AU
+        </p>
+        <p>Privacy: The Scales Lab acts as a processor; clients are controllers. Minimal PII; delete on request.</p>
+        <p>© <span id="year"></span> The Scales Lab</p>
+      </div>
     </div>
   </footer>
+
+  <!-- Tiny helpers -->
+  <script>
+    // Year stamp
+    document.getElementById('year').textContent = new Date().getFullYear();
+
+    // Reveal sticky CTA after 600px scroll
+    (function () {
+      const bar = document.getElementById('sticky-cta');
+      const showAt = 600;
+      const onScroll = () => {
+        const y = window.scrollY || document.documentElement.scrollTop;
+        if (y > showAt) {
+          bar.classList.remove('opacity-0', 'translate-y-4', 'pointer-events-none');
+          bar.classList.add('opacity-100', 'translate-y-0');
+        } else {
+          bar.classList.add('opacity-0', 'translate-y-4', 'pointer-events-none');
+          bar.classList.remove('opacity-100', 'translate-y-0');
+        }
+      };
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+    })();
+  </script>
 </body>
 </html>

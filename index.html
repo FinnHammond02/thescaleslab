@@ -4,8 +4,8 @@
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <title>{{PAGE_TITLE}} Real Estate Sales OS — Under-2-Minute Lead Replies</title>
-  <meta name="description" content="{{META_DESCRIPTION}} Lift booked appraisals 20–40% in 14 days—without touching your CRM." />
+  <title>Real Estate Sales OS — Under-2-Minute Lead Replies</title>
+  <meta name="description" content="Lift booked appraisals 20–40% in 14 days—without touching your CRM." />
 
   <!-- Open Graph -->
   <meta property="og:title" content="Real Estate Sales OS — Under-2-Minute Lead Replies" />
@@ -23,14 +23,11 @@
   <!-- Tailwind (CDN, no build step) -->
   <script src="https://cdn.tailwindcss.com"></script>
   <script>
-    // Tailwind config (optional): use system font stack for speed
-    tailwind.config = {
-      theme: { extend: {} }
-    };
+    tailwind.config = { theme: { extend: {} } };
   </script>
 
   <style>
-    /* Prefer-reduced-motion: minimize transitions for accessibility */
+    /* Reduce motion for accessibility */
     @media (prefers-reduced-motion: reduce) {
       .motion-safe\:transition { transition: none !important; }
       .motion-safe\:duration-300 { transition-duration: 0ms !important; }
@@ -41,15 +38,16 @@
 <body class="min-h-full bg-white text-neutral-900 antialiased scroll-smooth">
   <header class="border-b border-neutral-200">
     <div class="mx-auto max-w-5xl px-4 py-10 md:py-16">
-      <!-- Hero -->
-      <p class="text-sm text-neutral-600">{{TRUST_STRIP}} Remote install · 14-day pilot · Month-to-month</p>
+      <!-- Trust strip -->
+      <p class="text-sm text-neutral-600">Remote install · 14-day pilot · Month-to-month</p>
 
+      <!-- Hero -->
       <h1 class="mt-3 text-4xl font-extrabold tracking-tight md:mt-4 md:text-6xl">
-        {{HERO_HEADLINE}} Under-2-Minute Lead Replies for Real Estate.
+        Under-2-Minute Lead Replies for Real Estate.
       </h1>
 
       <p class="mt-3 max-w-2xl text-base text-neutral-700 md:text-lg">
-        {{HERO_SUBHEAD}} Lift booked appraisals 20–40% in 14 days—without touching your CRM.
+        Lift booked appraisals 20–40% in 14 days—without touching your CRM.
       </p>
 
       <div class="mt-6 flex flex-wrap items-center gap-3">
@@ -77,7 +75,7 @@
               <iframe
                 title="Real Estate Sales OS — 90 second demo"
                 class="absolute inset-0 h-full w-full"
-                src="https://www.loom.com/embed/{{VIDEO_ID}}"
+                src="https://www.loom.com/embed/d4014fb0adb2458b952f9da2f8eecdde"
                 loading="lazy"
                 allow="fullscreen; autoplay"
               ></iframe>
@@ -91,7 +89,7 @@
     <section aria-labelledby="value-title" class="border-b border-neutral-200">
       <div class="mx-auto max-w-5xl px-4 py-16 md:py-20">
         <h2 id="value-title" class="text-2xl font-extrabold tracking-tight md:text-3xl">
-          {{VALUE_TITLE}} Why this matters
+          Why this matters
         </h2>
 
         <div class="mt-8 grid grid-cols-1 gap-6 md:grid-cols-3">
@@ -117,7 +115,7 @@
     <section aria-labelledby="how-title" class="border-b border-neutral-200">
       <div class="mx-auto max-w-5xl px-4 py-16 md:py-20">
         <h2 id="how-title" class="text-2xl font-extrabold tracking-tight md:text-3xl">
-          {{HOW_TITLE}} How it works
+          How it works
         </h2>
 
         <ol class="mt-6 space-y-4 text-neutral-800">
@@ -145,7 +143,7 @@
     <section aria-labelledby="offer-title" class="border-b border-neutral-200">
       <div class="mx-auto max-w-5xl px-4 py-16 md:py-20">
         <h2 id="offer-title" class="text-2xl font-extrabold tracking-tight md:text-3xl">
-          {{OFFER_HEADLINE}} Live in 14 Days. Remote. No CRM integration needed.
+          Live in 14 Days. Remote. No CRM integration needed.
         </h2>
 
         <ul class="mt-6 list-disc space-y-2 pl-5 text-neutral-800">
@@ -158,7 +156,7 @@
         </ul>
 
         <p class="mt-6 text-base font-semibold text-neutral-900">
-          {{PRICING_LINE}} Pilot $1,000 / 14 days (credited if you continue). Setup from $1,500, Ops from $750/mo.
+          Pilot $1,000 / 14 days (credited if you continue). Setup from $1,500, Ops from $750/mo.
         </p>
 
         <div class="mt-6">
@@ -176,7 +174,7 @@
     <section aria-labelledby="proof-title" class="border-b border-neutral-200">
       <div class="mx-auto max-w-5xl px-4 py-16 md:py-20">
         <h2 id="proof-title" class="text-2xl font-extrabold tracking-tight md:text-3xl">
-          {{PROOF_TITLE}} Proof (mechanics-first)
+          Proof (mechanics-first)
         </h2>
 
         <div class="mt-6 rounded-xl border border-neutral-200 p-6 shadow-sm">
@@ -187,11 +185,11 @@
             </li>
             <li class="rounded-lg bg-neutral-50 p-4 text-center">
               <div class="text-sm text-neutral-500">Booked appraisals / 100 leads</div>
-              <div class="mt-1 text-xl font-bold">+{{XX}}% in 14 days</div>
+              <div class="mt-1 text-xl font-bold">+XX% in 14 days</div>
             </li>
             <li class="rounded-lg bg-neutral-50 p-4 text-center">
               <div class="text-sm text-neutral-500">No-shows</div>
-              <div class="mt-1 text-xl font-bold">−{{YY}}%</div>
+              <div class="mt-1 text-xl font-bold">−YY%</div>
             </li>
           </ul>
           <p class="mt-4 text-sm text-neutral-600">Results from a recent pilot using identical workflow.</p>
@@ -204,31 +202,31 @@
       <div class="mx-auto max-w-5xl px-4 py-16 md:py-20">
         <h2 id="faq-title" class="text-2xl font-extrabold tracking-tight md:text-3xl">FAQ</h2>
 
-        <div class="mt-6 space-y-4">
-          <details class="rounded-lg border border-neutral-200 p-4">
-            <summary class="cursor-pointer text-base font-semibold">Do you integrate with Agentbox/Box+Dice/etc.?</summary>
-            <p class="mt-2 text-sm text-neutral-700">
-              Pilot runs around your CRM via forms/email parsing; we mirror activity by CSV/BCC. No risky APIs needed.
-            </p>
-          </details>
+      <div class="mt-6 space-y-4">
+        <details class="rounded-lg border border-neutral-200 p-4">
+          <summary class="cursor-pointer text-base font-semibold">Do you integrate with Agentbox/Box+Dice/etc.?</summary>
+          <p class="mt-2 text-sm text-neutral-700">
+            Pilot runs around your CRM via forms/email parsing; we mirror activity by CSV/BCC. No risky APIs needed.
+          </p>
+        </details>
 
-          <details class="rounded-lg border border-neutral-200 p-4">
-            <summary class="cursor-pointer text-base font-semibold">Do you need to visit our office?</summary>
-            <p class="mt-2 text-sm text-neutral-700">No, fully remote; 45-min onboarding.</p>
-          </details>
+        <details class="rounded-lg border border-neutral-200 p-4">
+          <summary class="cursor-pointer text-base font-semibold">Do you need to visit our office?</summary>
+          <p class="mt-2 text-sm text-neutral-700">No, fully remote; 45-min onboarding.</p>
+        </details>
 
-          <details class="rounded-lg border border-neutral-200 p-4">
-            <summary class="cursor-pointer text-base font-semibold">Data &amp; privacy?</summary>
-            <p class="mt-2 text-sm text-neutral-700">
-              You’re the controller; we’re the processor. Minimal PII; delete on request.
-            </p>
-          </details>
+        <details class="rounded-lg border border-neutral-200 p-4">
+          <summary class="cursor-pointer text-base font-semibold">Data &amp; privacy?</summary>
+          <p class="mt-2 text-sm text-neutral-700">
+            You’re the controller; we’re the processor. Minimal PII; delete on request.
+          </p>
+        </details>
 
-          <details class="rounded-lg border border-neutral-200 p-4">
-            <summary class="cursor-pointer text-base font-semibold">Timeline?</summary>
-            <p class="mt-2 text-sm text-neutral-700">Go-live in 14 days.</p>
-          </details>
-        </div>
+        <details class="rounded-lg border border-neutral-200 p-4">
+          <summary class="cursor-pointer text-base font-semibold">Timeline?</summary>
+          <p class="mt-2 text-sm text-neutral-700">Go-live in 14 days.</p>
+        </details>
+      </div>
       </div>
     </section>
 
@@ -239,7 +237,7 @@
         <div class="mt-6 flex items-center gap-4">
           <div class="h-16 w-16 rounded-full bg-neutral-200" aria-hidden="true"></div>
           <p class="max-w-3xl text-sm text-neutral-800">
-            {{ABOUT_PARAGRAPH}} I’m Finn (Melbourne, AU). Background in B2B sales at Landchecker.
+            I’m Finn (Melbourne, AU). Background in B2B sales at Landchecker.
             I build AI + automation systems for real-estate teams to cut speed-to-lead and lift booked appraisals.
           </p>
         </div>

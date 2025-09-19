@@ -30,242 +30,214 @@
   </script>
 
   <style>
-    /* ======= Design System (Brez-like) ======= */
+    /* ===== Design tokens / layout ===== */
     :root{
-      --bg:#ffffff;
-      --text:#0f172a;      /* near-black */
-      --muted:#64748b;     /* slate-500 */
-      --line:#e5e7eb;      /* gray-200 */
-      --accent:#2563eb;    /* blue-600 */
-      --radius:16px;
-      --shadow:0 6px 24px rgba(0,0,0,.06);
-      --ring:0 0 0 2px var(--accent);
+      --bg:#ffffff; --text:#0f172a; --muted:#64748b; --line:#e5e7eb;
+      --accent:#2563eb; --radius:16px; --shadow:0 6px 24px rgba(0,0,0,.06);
     }
     html,body{background:var(--bg);color:var(--text)}
-    .container{max-width:1200px;margin-inline:auto;padding-inline:24px}
-    .prose-max{max-width:68ch}
-    .card{border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);background:#fff}
-    .soft{border-radius:var(--radius)}
-    .shadow-soft{box-shadow:var(--shadow)}
-    .btn{display:inline-flex;align-items:center;gap:.5rem;border-radius:10px;font-weight:700;padding:.875rem 1.25rem}
-    .btn-accent{background:var(--accent);color:#fff}
-    .btn-accent:hover{opacity:.9}
-    .btn-outline{border:1px solid var(--line);background:#fff;color:var(--text)}
-    .eyebrow{font-size:.875rem;color:var(--muted)}
+    .container{max-width:1200px;margin:0 auto;padding:0 24px}
+    section{padding:40px 0}
+    @media (min-width:768px){section{padding:64px 0}}
     .h1{font-size:clamp(36px,5vw,56px);line-height:1.1;letter-spacing:-0.02em}
     .h2{font-size:clamp(28px,3.5vw,40px);line-height:1.15}
-    .h3{font-size:clamp(20px,2.5vw,28px)}
-    .lead{font-size:clamp(16px,1.8vw,18px);line-height:1.6}
-    .kpi .num{font-size:clamp(24px,4vw,36px);font-weight:800}
-    .divider{height:1px;background:var(--line)}
-    .icon{width:28px;height:28px;color:var(--text);opacity:.9}
+    .lead{font-size:clamp(16px,1.8vw,18px);line-height:1.6;max-width:68ch}
+    .card{border:1px solid var(--line);border-radius:12px;box-shadow:var(--shadow);background:#fff}
+    .soft{border-radius:var(--radius)}
+    .media{width:100%;aspect-ratio:16/9;border-radius:16px;overflow:hidden}
+    .media > img, .media > iframe{width:100%;height:100%;object-fit:cover;display:block}
+    .browser{border:1px solid var(--line);border-radius:16px;background:#fff;box-shadow:var(--shadow);overflow:hidden}
+    .browser .bar{height:40px;background:linear-gradient(#fafafa,#f3f4f6);border-bottom:1px solid var(--line);display:flex;align-items:center;gap:8px;padding:0 12px}
+    .dot{width:10px;height:10px;border-radius:999px;background:#e5e7eb}
+    .dot:nth-child(1){background:#ff5f56}.dot:nth-child(2){background:#ffbd2e}.dot:nth-child(3){background:#27c93f}
 
-    /* Images */
-    .media{aspect-ratio:16/9;object-fit:cover;border-radius:16px;overflow:hidden}
-
-    /* ======= Hero ======= */
+    /* Hero */
     .hero{position:relative;isolation:isolate}
     .hero::before{
       content:"";position:absolute;inset:-10% -20% auto -20%;
-      height:60%;background:radial-gradient(1000px 400px at 50% 0, rgba(37,99,235,.10), transparent 60%);
-      z-index:-1;filter:blur(10px)
+      height:60%;background:radial-gradient(900px 360px at 50% 0, rgba(37,99,235,.10), transparent 70%);
+      z-index:-1;filter:blur(8px)
     }
 
-    /* ======= Browser frame wrapper (for Loom + analytics images) ======= */
-    .browser{border:1px solid var(--line);border-radius:16px;background:#fff;box-shadow:var(--shadow);overflow:hidden}
-    .browser .bar{height:40px;background:linear-gradient(#fafafa,#f3f4f6);border-bottom:1px solid var(--line);display:flex;align-items:center;gap:8px;padding-inline:12px}
-    .dot{width:10px;height:10px;border-radius:999px;background:#e5e7eb}
-    .dot:nth-child(1){background:#ff5f56}
-    .dot:nth-child(2){background:#ffbd2e}
-    .dot:nth-child(3){background:#27c93f}
+    /* Why this matters: icon pills + equal heights */
+    .icon-pill{width:40px;height:40px;border-radius:999px;display:flex;align-items:center;justify-content:center;background:#f3f4f6;color:#0f172a}
+    .icon-pill svg{width:24px;height:24px}
+    .why-grid{display:grid;gap:24px}
+    @media (min-width:1024px){.why-grid{grid-template-columns:repeat(3,1fr)}}
+    .why-card{display:flex;flex-direction:column;gap:10px;min-height:220px}
 
-    /* ======= Loom lazy loader ======= */
-    .loom-poster{position:relative;cursor:pointer}
-    .loom-poster::after{
-      content:"";position:absolute;inset:0;background:linear-gradient(to bottom, rgba(0,0,0,.0), rgba(0,0,0,.10));
-      transition:opacity .2s ease
-    }
-    .play{
-      position:absolute;inset:0;margin:auto;width:70px;height:70px;border-radius:50%;
-      display:grid;place-items:center;background:rgba(15,23,42,.85);color:white;
-      box-shadow:0 10px 30px rgba(0,0,0,.25)
-    }
-    .play svg{width:26px;height:26px;transform:translateX(2px)}
-    .loom-poster:hover .play{transform:scale(1.03)}
-
-    /* ======= Steps ======= */
-    .step-grid{display:grid;gap:24px}
-    @media (min-width: 1024px){ .step-grid{grid-template-columns:repeat(4,1fr)} }
-    .step{display:flex;gap:12px;padding:16px;border:1px solid var(--line);border-radius:14px;background:#fff}
-    .numb{
-      width:32px;height:32px;border-radius:999px;border:1px solid var(--line);
-      display:grid;place-items:center;font-weight:700;font-size:14px;color:var(--text);background:#fff;flex:0 0 auto
-    }
-    .step + .step{position:relative}
+    /* Proof (dashboard/table) — stacked with alternating caption placement */
+    .proof-grid{display:grid;gap:32px}
+    .proof-item{display:grid;gap:16px}
     @media (min-width:1024px){
-      .step + .step::before{content:"";position:absolute;left:-12px;top:50%;width:1px;height:70%;transform:translateY(-50%);background:var(--line)}
+      .proof-item{grid-template-columns:7fr 5fr;align-items:center}
+      .proof-item.alt{grid-template-columns:5fr 7fr}
     }
+    figcaption{color:var(--muted)}
 
-    /* ======= Sticky CTA ======= */
-    #sticky-cta{transition:all .25s ease}
-    #sticky-cta.show{opacity:1;transform:translateY(0)}
-    #sticky-cta.hide{opacity:0;transform:translateY(16px);pointer-events:none}
+    /* Loom wrap */
+    .loom-wrap{box-shadow:var(--shadow);border-radius:16px;overflow:hidden}
+    .loom-wrap iframe{width:100%;height:100%;border:0}
 
-    /* ======= FAQ (if present in markup) ======= */
-    details.faq{border:1px solid var(--line);border-radius:14px;background:#fff;padding:14px}
-    details.faq summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;font-weight:700}
-    details.faq summary::-webkit-details-marker{display:none}
-    .chev{transition:transform .2s ease}
-    details[open] .chev{transform:rotate(180deg)}
+    /* Buttons / CTA */
+    .btn{display:inline-flex;align-items:center;gap:.5rem;border-radius:999px;font-weight:700;padding:.85rem 1.1rem}
+    .btn-accent{background:var(--accent);color:#fff}
+    .btn-accent:hover{opacity:.92}
+
+    /* Sticky CTA — bottom-right pill, no leftover whitespace */
+    .sticky-cta-wrap{position:fixed;inset:auto 16px 16px auto;z-index:50}
+    .sticky-cta{position:fixed;right:16px;bottom:16px;display:inline-flex;align-items:center;gap:8px;padding:12px 16px;background:var(--accent);color:#fff;border-radius:999px;box-shadow:0 8px 28px rgba(0,0,0,.12);z-index:50;transition:opacity .2s, transform .2s}
+    .sticky-cta.hide{opacity:0;transform:translateY(8px);pointer-events:none}
+
+    /* Footer spacing */
+    .foot{font-size:.95rem;color:var(--muted)}
   </style>
 </head>
 
 <body class="min-h-full antialiased">
-  <!-- ======= HEADER / HERO ======= -->
+  <!-- ===== HEADER / HERO (content unchanged) ===== -->
   <header class="border-b border-[var(--line)] hero">
     <div class="container">
-      <div class="mx-auto max-w-[900px] text-center py-14 md:py-24 lg:min-h-[70vh] flex flex-col items-center justify-center">
-        <p class="eyebrow">Remote install · 14-day pilot · Month-to-month · No system changes</p>
+      <div class="mx-auto text-center py-14 md:py-24 lg:min-h-[70vh] flex flex-col items-center justify-center">
+        <p class="text-sm text-[var(--muted)]">Remote install · 14-day pilot · Month-to-month · No system changes</p>
 
         <h1 class="h1 mt-3">AI-powered, data-driven sales for real estate</h1>
 
-        <p class="lead prose-max mt-4">
+        <p class="lead mt-4">
           More enquiries become booked appointments with instant AI replies and automated follow-ups. Clean data shows what to improve.
         </p>
 
-        <p class="lead prose-max mt-4 text-[var(--muted)]">
+        <p class="lead mt-4 text-[var(--muted)]">
           Customise your AI tools to speak similarly to company employees. Bookings up 20–40%. Data you can act on, every day.
         </p>
 
-        <div class="mt-8 flex flex-wrap items-center justify-center gap-3">
+        <div class="mt-8">
           <a href="mailto:finn@thescalelab.com?subject=Sales%20OS%20enquiry" class="btn btn-accent">Contact now</a>
-          <a href="mailto:finn@thescalelab.com?subject=Sales%20OS%20enquiry" class="btn btn-outline">Email us</a>
         </div>
       </div>
     </div>
   </header>
 
   <main id="main-content">
-    <!-- ======= LOOM (lazy) ======= -->
+    <!-- ===== LOOM (keep video; responsive container) ===== -->
     <section aria-labelledby="demo-title" class="border-b border-[var(--line)]">
       <h2 id="demo-title" class="sr-only">Product demo</h2>
-      <div class="container py-12 md:py-16">
-        <div class="browser">
+      <div class="container">
+        <div class="browser loom-wrap">
           <div class="bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
-          <!-- Poster image (uses dashboard image as a neutral thumbnail). Click swaps to iframe. -->
-          <div id="loomWrap" class="loom-poster relative">
-            <img src="/assets/img/sales-overview-dashboard.png" alt="" class="media w-full" loading="lazy" decoding="async">
-            <div class="play" aria-hidden="true">
-              <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-            </div>
+          <div class="media">
+            <iframe
+              title="Real Estate Sales OS — 90 second demo"
+              src="https://www.loom.com/embed/d4014fb0adb2458b952f9da2f8eecdde"
+              loading="lazy"
+              allow="fullscreen; autoplay"
+            ></iframe>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- ======= WHY THIS MATTERS (3 cards) ======= -->
+    <!-- ===== WHY THIS MATTERS (icon upgrade, equal-height cards, copy unchanged) ===== -->
     <section aria-labelledby="value-title" class="border-b border-[var(--line)]">
-      <div class="container py-16 md:py-20">
+      <div class="container">
         <h2 id="value-title" class="h2">Why this matters</h2>
 
-        <div class="mt-8 grid grid-cols-1 gap-6 md:grid-cols-3">
-          <!-- Card 1 -->
-          <article class="card p-6 flex flex-col">
-            <div class="mb-4">
-              <!-- icon -->
-              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                <path stroke-width="1.5" d="M3 7h18M3 12h12M3 17h8"/>
-              </svg>
+        <div class="why-grid mt-8">
+          <article class="card p-6 why-card">
+            <div class="icon-pill mb-1">
+              <!-- List icon -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-width="1.6" d="M4 6h16M4 12h12M4 18h8"/></svg>
             </div>
-            <h3 class="h3">AI lead intelligence &amp; routing</h3>
-            <p class="mt-2 text-[var(--muted)]">
+            <h3 class="text-[clamp(20px,2.5vw,28px)] font-semibold">AI lead intelligence &amp; routing</h3>
+            <p class="text-[var(--muted)]">
               Understands intent, value, suburb, and urgency; writes the first message in your brand voice; predicts who will book; routes to the best person instantly.
             </p>
           </article>
 
-          <!-- Card 2 -->
-          <article class="card p-6 flex flex-col">
-            <div class="mb-4">
-              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                <path stroke-width="1.5" d="M5 12h14M12 5l7 7-7 7"/>
-              </svg>
+          <article class="card p-6 why-card">
+            <div class="icon-pill mb-1">
+              <!-- Arrow-right icon -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-width="1.6" d="M5 12h14M12 5l7 7-7 7"/></svg>
             </div>
-            <h3 class="h3">Adaptive AI follow-ups &amp; booking</h3>
-            <p class="mt-2 text-[var(--muted)]">
+            <h3 class="text-[clamp(20px,2.5vw,28px)] font-semibold">Adaptive AI follow-ups &amp; booking</h3>
+            <p class="text-[var(--muted)]">
               Learns from engagement to adjust timing, channel, and wording; moves the conversation forward, books the meeting, and auto-recovers missed appointments.
             </p>
           </article>
 
-          <!-- Card 3 -->
-          <article class="card p-6 flex flex-col">
-            <div class="mb-4">
-              <svg class="icon" viewBox="0 0 24 24" fill="none" stroke="currentColor">
-                <rect x="3" y="4" width="18" height="14" rx="2" stroke-width="1.5"/>
-                <path stroke-width="1.5" d="M7 9h4M7 13h10"/>
-              </svg>
+          <article class="card p-6 why-card">
+            <div class="icon-pill mb-1">
+              <!-- Chart icon -->
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"><path stroke-width="1.6" d="M4 19h16M7 16V8M12 16V5M17 16v-6"/></svg>
             </div>
-            <h3 class="h3">AI dashboards</h3>
-            <p class="mt-2 text-[var(--muted)]">
+            <h3 class="text-[clamp(20px,2.5vw,28px)] font-semibold">AI dashboards</h3>
+            <p class="text-[var(--muted)]">
               Turns activity into decisions—daily numbers, live dashboards, and a monthly summary with performance metrics and where to shift the budget.
             </p>
           </article>
         </div>
 
-        <!-- Existing two images, framed -->
-        <div class="mt-10 grid grid-cols-1 gap-6 md:grid-cols-2">
-          <figure class="browser">
+        <!-- PROOF VISUALS — stacked rows with alternating caption placement (copy unchanged) -->
+        <div class="proof-grid mt-10">
+          <!-- Row 1 -->
+          <figure class="proof-item browser">
             <div class="bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
-            <img src="/assets/img/sales-overview-dashboard.png" alt="Sales overview dashboard showing booking rate, reply time tiles, and charts by week and by source" loading="lazy" decoding="async" class="media w-full">
-            <figcaption class="px-3 py-2 text-sm text-[var(--muted)]">
+            <div class="media md:col-span-1">
+              <img src="/assets/img/sales-overview-dashboard.png" alt="Sales overview dashboard showing booking rate, reply time tiles, and charts by week and by source" loading="lazy" decoding="async">
+            </div>
+            <figcaption class="px-4 md:px-6 text-sm">
               Basic Performance Dashboard Example — Customisable To Suit Metrics Of Your Choice
             </figcaption>
           </figure>
 
-          <figure class="browser">
+          <!-- Row 2 (alternate) -->
+          <figure class="proof-item browser alt">
             <div class="bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
-            <img src="/assets/img/Table.png" alt="AI-powered leads table with Lead ID, Created at, Source, Campaign, Routing Rule, First reply time, Suburb and First Name" loading="lazy" decoding="async" class="media w-full" onerror="this.onerror=null; this.src='/assets/img/table.png';">
-            <figcaption class="px-3 py-2 text-sm text-[var(--muted)]">
+            <figcaption class="px-4 md:px-6 order-2 md:order-1 text-sm">
               Smart AI Lead Tracking Leads To Better Insights
             </figcaption>
+            <div class="media order-1 md:order-2">
+              <img src="/assets/img/Table.png" alt="AI-powered leads table with Lead ID, Created at, Source, Campaign, Routing Rule, First reply time, Suburb and First Name" loading="lazy" decoding="async" onerror="this.onerror=null; this.src='/assets/img/table.png';">
+            </div>
           </figure>
         </div>
       </div>
     </section>
 
-    <!-- ======= HOW IT WORKS ======= -->
+    <!-- ===== HOW IT WORKS (layout only; copy untouched) ===== -->
     <section aria-labelledby="how-title" class="border-b border-[var(--line)]">
-      <div class="container py-16 md:py-20">
+      <div class="container">
         <h2 id="how-title" class="h2">How it works</h2>
 
-        <div class="step-grid mt-6">
-          <div class="step">
-            <div class="numb">1</div>
+        <div class="mt-6 grid gap-4 lg:grid-cols-4">
+          <div class="card p-4 flex gap-3">
+            <div class="w-8 h-8 rounded-full border border-[var(--line)] grid place-items-center text-sm font-bold">1</div>
             <p><strong>Capture:</strong> Leads from every campaign are automatically uploaded into tracker.</p>
           </div>
-          <div class="step">
-            <div class="numb">2</div>
+          <div class="card p-4 flex gap-3">
+            <div class="w-8 h-8 rounded-full border border-[var(--line)] grid place-items-center text-sm font-bold">2</div>
             <p><strong>Instant reply:</strong> SMS &amp; Email with self booking.</p>
           </div>
-          <div class="step">
-            <div class="numb">3</div>
+          <div class="card p-4 flex gap-3">
+            <div class="w-8 h-8 rounded-full border border-[var(--line)] grid place-items-center text-sm font-bold">3</div>
             <p><strong>Show-up &amp; recovery:</strong> reminders, no-show reschedule.</p>
           </div>
-          <div class="step">
-            <div class="numb">4</div>
+          <div class="card p-4 flex gap-3">
+            <div class="w-8 h-8 rounded-full border border-[var(--line)] grid place-items-center text-sm font-bold">4</div>
             <p><strong>Dashboard &amp; AI insights:</strong> Daily performance metrics &amp; weekly test ideas.</p>
           </div>
         </div>
 
-        <p class="mt-6 prose-max text-[var(--muted)]">
+        <p class="mt-6 text-[var(--muted)] max-w-[68ch]">
           Customize every flow. Design an AI that responds to customers how you want, triggers follow-ups and reminders on your schedule, and surfaces the exact metrics you care about.
         </p>
       </div>
     </section>
 
-    <!-- ======= OFFER (highlight card) ======= -->
+    <!-- ===== OFFER (highlight card; copy untouched) ===== -->
     <section aria-labelledby="offer-title" class="border-b border-[var(--line)]">
-      <div class="container py-16 md:py-20">
-        <div class="card p-8 md:p-10">
+      <div class="container">
+        <div class="card p-7 md:p-10">
           <h2 id="offer-title" class="h2">Live in 14 Days. Remote. No CRM integration needed.</h2>
 
           <p class="mt-6 text-lg">
@@ -282,9 +254,9 @@
       </div>
     </section>
 
-    <!-- ======= CONTACT NOW (replacing About) ======= -->
+    <!-- ===== CONTACT NOW (copy untouched) ===== -->
     <section aria-labelledby="contact-title" class="border-b border-[var(--line)]">
-      <div class="container py-16 md:py-20">
+      <div class="container">
         <h2 id="contact-title" class="h2">Contact now</h2>
         <div class="mt-6 space-y-2">
           <p>Email: <a class="font-medium underline-offset-2 hover:underline" href="mailto:finn@thescalelab.com?subject=Sales%20OS%20enquiry">finn@thescalelab.com</a></p>
@@ -294,23 +266,19 @@
     </section>
   </main>
 
-  <!-- ======= STICKY CTA ======= -->
-  <div id="sticky-cta" class="fixed inset-x-0 bottom-0 z-30 hide">
-    <div class="container pb-4">
-      <div class="ml-auto w-full max-w-md rounded-2xl border border-[var(--line)] bg-white/95 p-3 shadow-soft backdrop-blur supports-[backdrop-filter]:bg-white/75">
-        <div class="flex items-center justify-end">
-          <a href="mailto:finn@thescalelab.com?subject=Sales%20OS%20enquiry" class="btn btn-accent" aria-label="Contact now">Contact now</a>
-        </div>
-      </div>
-    </div>
+  <!-- ===== STICKY CTA (bottom-right pill; no extra whitespace) ===== -->
+  <div id="stickyCta" class="sticky-cta hide">
+    <a href="mailto:finn@thescalelab.com?subject=Sales%20OS%20enquiry" class="font-semibold">Contact now</a>
   </div>
 
-  <!-- ======= FOOTER ======= -->
+  <!-- ===== FOOTER (unchanged copy) ===== -->
   <footer class="border-t border-[var(--line)]">
     <div class="container py-10 md:py-12">
-      <div class="flex flex-col gap-3 text-sm text-[var(--muted)] md:flex-row md:items-center md:justify-between">
+      <div class="flex flex-col gap-3 foot md:flex-row md:items-center md:justify-between">
         <p>
-          <a href="mailto:finn@thescalelab.com?subject=Sales%20OS%20enquiry" class="font-medium text-[var(--text)] hover:underline">finn@thescalelab.com</a>
+          <a href="mailto:finn@thescalelab.com?subject=Sales%20OS%20enquiry" class="font-medium text-[var(--text)] hover:underline">
+            finn@thescalelab.com
+          </a>
           <span class="mx-2">·</span> Melbourne, AU
         </p>
         <p>Privacy: The Scales Lab acts as a processor; clients are controllers. Minimal PII; delete on request.</p>
@@ -319,52 +287,19 @@
     </div>
   </footer>
 
-  <!-- ======= JS: year, sticky CTA, Loom swap, (optional) FAQ accordion ======= -->
+  <!-- Helpers: year + sticky CTA show after scroll -->
   <script>
-    // Year
     document.getElementById('year').textContent = new Date().getFullYear();
 
-    // Sticky CTA after 600px
     (function () {
-      const bar = document.getElementById('sticky-cta');
+      const cta = document.getElementById('stickyCta');
       const showAt = 600;
       const onScroll = () => {
         const y = window.scrollY || document.documentElement.scrollTop;
-        if (y > showAt) { bar.classList.add('show'); bar.classList.remove('hide'); }
-        else { bar.classList.add('hide'); bar.classList.remove('show'); }
+        if (y > showAt) cta.classList.remove('hide'); else cta.classList.add('hide');
       };
       window.addEventListener('scroll', onScroll, { passive: true });
       onScroll();
-    })();
-
-    // Loom lazy loader: click poster -> inject iframe
-    (function(){
-      const wrap = document.getElementById('loomWrap');
-      if(!wrap) return;
-      wrap.addEventListener('click', function(){
-        const iframe = document.createElement('iframe');
-        iframe.className = 'w-full';
-        iframe.style.aspectRatio = '16/9';
-        iframe.style.border = '0';
-        iframe.loading = 'lazy';
-        iframe.allow = 'fullscreen; autoplay';
-        iframe.title = 'Real Estate Sales OS — 90 second demo';
-        iframe.src = 'https://www.loom.com/embed/d4014fb0adb2458b952f9da2f8eecdde';
-        wrap.replaceWith(iframe);
-      }, { once:true });
-    })();
-
-    // Accessible FAQ accordion (only if details.faq exist in markup)
-    (function(){
-      const items = Array.from(document.querySelectorAll('details.faq'));
-      if(!items.length) return;
-      items.forEach(d=>{
-        d.addEventListener('toggle', ()=>{
-          if(d.open){
-            items.filter(x=>x!==d).forEach(x=>x.open=false);
-          }
-        });
-      });
     })();
   </script>
 </body>

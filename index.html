@@ -111,43 +111,35 @@
           </div>
         </div>
 
-        <!-- Visual examples under the 3rd card -->
+        <!-- Visual examples under the 3rd card (simple <img> so it always works) -->
         <div class="mt-10 space-y-6">
           <h3 class="text-base font-semibold text-neutral-800">What this looks like in practice</h3>
 
           <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
             <!-- Sales Overview dashboard -->
             <figure class="rounded-xl border border-neutral-200 bg-white p-2 shadow-sm">
-              <picture>
-                <source srcset="/assets/img/sales-overview-dashboard.avif" type="image/avif">
-                <source srcset="/assets/img/sales-overview-dashboard.webp" type="image/webp">
-                <img
-                  src="/assets/img/sales-overview-dashboard.png"
-                  alt="Sales overview dashboard showing booking rate, reply time tiles, and charts by week and by source"
-                  loading="lazy"
-                  width="1600" height="900"
-                  class="h-auto w-full rounded-lg"
-                />
-              </picture>
+              <img
+                src="/assets/img/sales-overview-dashboard.png"
+                alt="Sales overview dashboard showing booking rate, reply time tiles, and charts by week and by source"
+                loading="lazy" decoding="async" fetchpriority="low"
+                width="1600" height="900"
+                class="h-auto w-full rounded-lg"
+              />
               <figcaption class="px-2 py-2 text-sm text-neutral-600">
                 Live performance at a glance — booking rate, reply time, and where results are coming from.
               </figcaption>
             </figure>
 
-            <!-- Leads table (uses capital T filename) -->
+            <!-- Leads table (capital T filename) -->
             <figure class="rounded-xl border border-neutral-200 bg-white p-2 shadow-sm">
-              <picture>
-                <source srcset="/assets/img/Table.avif" type="image/avif">
-                <source srcset="/assets/img/Table.webp" type="image/webp">
-                <img
-                  src="/assets/img/Table.png"
-                  alt="AI-powered leads table with Lead ID, Created at, Source, Campaign, Routing Rule, First reply time, Suburb and First Name"
-                  loading="lazy"
-                  width="1523" height="703"
-                  class="h-auto w-full rounded-lg"
-                  onerror="this.onerror=null; this.src='/assets/img/table.png';"
-                />
-              </picture>
+              <img
+                src="/assets/img/Table.png"
+                alt="AI-powered leads table with Lead ID, Created at, Source, Campaign, Routing Rule, First reply time, Suburb and First Name"
+                loading="lazy" decoding="async" fetchpriority="low"
+                width="1523" height="703"
+                class="h-auto w-full rounded-lg"
+                onerror="this.onerror=null; this.src='/assets/img/table.png';"
+              />
               <figcaption class="px-2 py-2 text-sm text-neutral-600">
                 Every lead is tracked — source, campaign, routing, reply-time and suburb — so nothing slips.
               </figcaption>
@@ -282,7 +274,7 @@
       <div class="ml-auto w-full max-w-xs rounded-md border border-neutral-200 bg-white/95 p-3 shadow-lg backdrop-blur supports-[backdrop-filter]:bg-white/75">
         <div class="flex items-center justify-end">
           <a
-            href="mailto:finn@thescalelab.com?subject=Sales%20OS%20enquiry"
+            href="mailto:finn@thescaleslab.com?subject=Sales%20OS%20enquiry"
             class="pointer-events-auto inline-flex items-center rounded-md bg-blue-600 px-4 py-2 text-sm font-semibold text-white motion-safe:transition motion-safe:duration-300 hover:opacity-90 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-600 focus-visible:ring-offset-2"
             aria-label="Contact now"
           >
@@ -297,8 +289,8 @@
     <div class="mx-auto max-w-5xl px-4 py-10 md:py-12">
       <div class="flex flex-col items-start gap-2 text-sm text-neutral-600 md:flex-row md:items-center md:justify-between">
         <p>
-          <a href="mailto:finn@thescalelab.com?subject=Sales%20OS%20enquiry" class="font-medium text-neutral-800 hover:underline">
-            finn@thescalelab.com
+          <a href="mailto:finn@thescaleslab.com?subject=Sales%20OS%20enquiry" class="font-medium text-neutral-800 hover:underline">
+            finn@thescaleslab.com
           </a>
           <span class="mx-2">·</span> Melbourne, AU
         </p>

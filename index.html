@@ -26,55 +26,16 @@
       .motion-safe\:transition { transition: none !important; }
       .motion-safe\:duration-300 { transition-duration: 0ms !important; }
     }
-    /* --- Image cards: background images with graceful fallback --- */
-    .img-card{
-      position: relative;
-      padding-top: 56.25%;       /* 16:9 ratio */
-      border-radius: 0.75rem;    /* rounded-xl */
-      background-color: #f5f5f5; /* neutral-100 */
-      background-size: cover;
-      background-position: center;
-      overflow: hidden;
-    }
-    .img-dashboard{
-      background-image:
-        image-set(
-          url("/assets/img/sales-overview-dashboard.webp") type("image/webp"),
-          url("/assets/img/sales-overview-dashboard.png") type("image/png"),
-          url("/assets/img/sales-overview-dashboard.jpg") type("image/jpeg")
-        );
-    }
-    /* Use table.png as the primary source, with fallbacks to previous names */
-    .img-leads{
-      background-image:
-        image-set(
-          url("/assets/img/table.webp") type("image/webp"),
-          url("/assets/img/table.png") type("image/png"),
-          url("/assets/img/table.jpg") type("image/jpeg"),
-          url("/assets/img/ai-leads-table.webp") type("image/webp"),
-          url("/assets/img/ai-leads-table.png") type("image/png"),
-          url("/assets/img/ai-leads-table.jpg") type("image/jpeg")
-        );
-    }
-    /* Subtle skeleton shimmer until an image is present */
-    .img-card::after{
-      content:"";
-      position:absolute; inset:0;
-      background-image: linear-gradient(90deg, rgba(0,0,0,0) 0%, rgba(0,0,0,.03) 50%, rgba(0,0,0,0) 100%);
-      background-size: 600px 100%;
-      animation: shimmer 1.8s infinite;
-      opacity: 0.25;
-    }
-    @keyframes shimmer { 0%{ background-position:-600px 0 } 100%{ background-position:600px 0 } }
-    .img-card.bg-loaded::after{ display:none; }
   </style>
 </head>
 
 <body class="min-h-full bg-white text-neutral-900 antialiased scroll-smooth">
   <header class="border-b border-neutral-200">
     <div class="mx-auto max-w-5xl px-4 py-10 md:py-16">
+      <!-- Proof strip -->
       <p class="text-sm text-neutral-600">Remote install · 14-day pilot · Month-to-month · No system changes</p>
 
+      <!-- Hero -->
       <h1 class="mt-3 text-4xl font-extrabold tracking-tight md:mt-4 md:text-6xl">
         AI-powered, data-driven sales for real estate
       </h1>
@@ -83,6 +44,7 @@
         More enquiries become booked appointments with instant AI replies and automated follow-ups. Clean data shows what to improve.
       </p>
 
+      <!-- Support line -->
       <p class="mt-3 max-w-3xl text-sm text-neutral-600 md:text-base">
         Customise your AI tools to speak similarly to company employees. Bookings up 20–40%. Data you can act on, every day.
       </p>
@@ -156,17 +118,36 @@
           <div class="grid grid-cols-1 gap-6 md:grid-cols-2">
             <!-- Sales Overview dashboard -->
             <figure class="rounded-xl border border-neutral-200 bg-white p-2 shadow-sm">
-              <div class="img-card img-dashboard" role="img"
-                   aria-label="Sales overview dashboard showing booking rate increase, reply time KPIs, and charts by week and by source"></div>
+              <picture>
+                <source srcset="/assets/img/sales-overview-dashboard.avif" type="image/avif">
+                <source srcset="/assets/img/sales-overview-dashboard.webp" type="image/webp">
+                <img
+                  src="/assets/img/sales-overview-dashboard.png"
+                  alt="Sales overview dashboard showing booking rate, reply time tiles, and charts by week and by source"
+                  loading="lazy"
+                  width="1600" height="900"
+                  class="h-auto w-full rounded-lg"
+                />
+              </picture>
               <figcaption class="px-2 py-2 text-sm text-neutral-600">
                 Live performance at a glance — booking rate, reply time, and where results are coming from.
               </figcaption>
             </figure>
 
-            <!-- Leads table (now uses /assets/img/table.png primarily) -->
+            <!-- Leads table (uses capital T filename) -->
             <figure class="rounded-xl border border-neutral-200 bg-white p-2 shadow-sm">
-              <div class="img-card img-leads" role="img"
-                   aria-label="AI-powered leads table with Lead ID, Created at, Source, Campaign, Routing Rule, First reply time, Suburb and First Name"></div>
+              <picture>
+                <source srcset="/assets/img/Table.avif" type="image/avif">
+                <source srcset="/assets/img/Table.webp" type="image/webp">
+                <img
+                  src="/assets/img/Table.png"
+                  alt="AI-powered leads table with Lead ID, Created at, Source, Campaign, Routing Rule, First reply time, Suburb and First Name"
+                  loading="lazy"
+                  width="1523" height="703"
+                  class="h-auto w-full rounded-lg"
+                  onerror="this.onerror=null; this.src='/assets/img/table.png';"
+                />
+              </picture>
               <figcaption class="px-2 py-2 text-sm text-neutral-600">
                 Every lead is tracked — source, campaign, routing, reply-time and suburb — so nothing slips.
               </figcaption>
@@ -349,14 +330,6 @@
       window.addEventListener('scroll', onScroll, { passive: true });
       onScroll();
     })();
-
-    // Hide shimmer overlay when a background image is present
-    ['img-dashboard','img-leads'].forEach(cls=>{
-      const el=document.querySelector('.'+cls);
-      if(!el) return;
-      const bg=getComputedStyle(el).backgroundImage;
-      if(bg && bg!=='none'){ el.classList.add('bg-loaded'); }
-    });
   </script>
 </body>
 </html>

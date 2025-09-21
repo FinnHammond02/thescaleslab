@@ -46,6 +46,8 @@
     .soft{border-radius:var(--radius)}
     .media{width:100%;aspect-ratio:16/9;border-radius:16px;overflow:hidden}
     .media > img, .media > iframe{width:100%;height:100%;object-fit:cover;display:block}
+
+    /* Browser bubble (image-only) */
     .browser{border:1px solid var(--line);border-radius:16px;background:#fff;box-shadow:var(--shadow);overflow:hidden}
     .browser .bar{height:40px;background:linear-gradient(#fafafa,#f3f4f6);border-bottom:1px solid var(--line);display:flex;align-items:center;gap:8px;padding:0 12px}
     .dot{width:10px;height:10px;border-radius:999px;background:#e5e7eb}
@@ -66,30 +68,28 @@
     @media (min-width:1024px){.why-grid{grid-template-columns:repeat(3,1fr)}}
     .why-card{display:flex;flex-direction:column;gap:10px;min-height:220px}
 
-    /* Proof (dashboard/table) — stacked with alternating caption placement */
-    .proof-grid{display:grid;gap:32px}
-    .proof-item{display:grid;gap:16px}
+    /* Proof (dashboard/table) — image bubble separated from text */
+    .proof-stack{display:grid;gap:40px}
+    .proof-row{display:grid;gap:20px}
     @media (min-width:1024px){
-      .proof-item{grid-template-columns:7fr 5fr;align-items:center}
-      .proof-item.alt{grid-template-columns:5fr 7fr}
+      .proof-row{grid-template-columns:7fr 5fr;align-items:center}
+      .proof-row.alt{grid-template-columns:5fr 7fr}
     }
-    figcaption{color:var(--muted)}
+    .proof-copy{font-size:.95rem;color:var(--muted)}
 
     /* Loom wrap */
     .loom-wrap{box-shadow:var(--shadow);border-radius:16px;overflow:hidden}
-    .loom-wrap iframe{width:100%;height:100%;border:0}
 
     /* Buttons / CTA */
     .btn{display:inline-flex;align-items:center;gap:.5rem;border-radius:999px;font-weight:700;padding:.85rem 1.1rem}
     .btn-accent{background:var(--accent);color:#fff}
     .btn-accent:hover{opacity:.92}
 
-    /* Sticky CTA — bottom-right pill, no leftover whitespace */
-    .sticky-cta-wrap{position:fixed;inset:auto 16px 16px auto;z-index:50}
+    /* Sticky CTA — bottom-right pill; no extra whitespace */
     .sticky-cta{position:fixed;right:16px;bottom:16px;display:inline-flex;align-items:center;gap:8px;padding:12px 16px;background:var(--accent);color:#fff;border-radius:999px;box-shadow:0 8px 28px rgba(0,0,0,.12);z-index:50;transition:opacity .2s, transform .2s}
     .sticky-cta.hide{opacity:0;transform:translateY(8px);pointer-events:none}
 
-    /* Footer spacing */
+    /* Footer text */
     .foot{font-size:.95rem;color:var(--muted)}
   </style>
 </head>
@@ -119,7 +119,7 @@
   </header>
 
   <main id="main-content">
-    <!-- ===== LOOM (keep video; responsive container) ===== -->
+    <!-- ===== LOOM (new video; responsive) ===== -->
     <section aria-labelledby="demo-title" class="border-b border-[var(--line)]">
       <h2 id="demo-title" class="sr-only">Product demo</h2>
       <div class="container">
@@ -128,7 +128,7 @@
           <div class="media">
             <iframe
               title="Real Estate Sales OS — 90 second demo"
-              src="https://www.loom.com/embed/d4014fb0adb2458b952f9da2f8eecdde"
+              src="https://www.loom.com/embed/b0a7bfde3ae04f9989b3b32e463e1b9b"
               loading="lazy"
               allow="fullscreen; autoplay"
             ></iframe>
@@ -177,29 +177,33 @@
           </article>
         </div>
 
-        <!-- PROOF VISUALS — stacked rows with alternating caption placement (copy unchanged) -->
-        <div class="proof-grid mt-10">
+        <!-- PROOF VISUALS — image bubble separated from text (stacked rows) -->
+        <div class="proof-stack mt-10">
           <!-- Row 1 -->
-          <figure class="proof-item browser">
-            <div class="bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
-            <div class="media md:col-span-1">
-              <img src="/assets/img/sales-overview-dashboard.png" alt="Sales overview dashboard showing booking rate, reply time tiles, and charts by week and by source" loading="lazy" decoding="async">
-            </div>
-            <figcaption class="px-4 md:px-6 text-sm">
+          <div class="proof-row">
+            <figure class="browser m-0">
+              <div class="bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+              <div class="media">
+                <img src="/assets/img/sales-overview-dashboard.png" alt="Sales overview dashboard showing booking rate, reply time tiles, and charts by week and by source" loading="lazy" decoding="async">
+              </div>
+            </figure>
+            <div class="proof-copy">
               Basic Performance Dashboard Example — Customisable To Suit Metrics Of Your Choice
-            </figcaption>
-          </figure>
-
-          <!-- Row 2 (alternate) -->
-          <figure class="proof-item browser alt">
-            <div class="bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
-            <figcaption class="px-4 md:px-6 order-2 md:order-1 text-sm">
-              Smart AI Lead Tracking Leads To Better Insights
-            </figcaption>
-            <div class="media order-1 md:order-2">
-              <img src="/assets/img/Table.png" alt="AI-powered leads table with Lead ID, Created at, Source, Campaign, Routing Rule, First reply time, Suburb and First Name" loading="lazy" decoding="async" onerror="this.onerror=null; this.src='/assets/img/table.png';">
             </div>
-          </figure>
+          </div>
+
+          <!-- Row 2 (alternate order on desktop) -->
+          <div class="proof-row alt">
+            <div class="proof-copy order-2 lg:order-1">
+              Smart AI Lead Tracking Leads To Better Insights
+            </div>
+            <figure class="browser m-0 order-1 lg:order-2">
+              <div class="bar"><span class="dot"></span><span class="dot"></span><span class="dot"></span></div>
+              <div class="media">
+                <img src="/assets/img/Table.png" alt="AI-powered leads table with Lead ID, Created at, Source, Campaign, Routing Rule, First reply time, Suburb and First Name" loading="lazy" decoding="async" onerror="this.onerror=null; this.src='/assets/img/table.png';">
+              </div>
+            </figure>
+          </div>
         </div>
       </div>
     </section>
